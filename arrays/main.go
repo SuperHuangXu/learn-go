@@ -1,4 +1,6 @@
-package arrays
+package main
+
+import "fmt"
 
 func Sum(num []int) int {
   res := 0
@@ -29,4 +31,17 @@ func SumAllTails(numbers ...[]int) []int {
     }
   }
   return sums
+}
+
+func MapRange(numbers map[string]string) {
+  for i, v := range numbers {
+    fmt.Printf("index: %s, val: %s\n", i, v)
+  }
+}
+
+func main() {
+  MapRange(map[string]string{
+    "name": "xm",
+    "sex":  "1",
+  })
 }
