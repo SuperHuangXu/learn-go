@@ -1,7 +1,7 @@
 package main
 
 import (
-  "errors"
+  "encoding/json"
   "fmt"
 )
 
@@ -10,25 +10,26 @@ type Student struct {
   Age  int
 }
 
-func AddAge(stu Student) int {
-  return stu.Age + 100
+type Per struct {
+  Hello   string
+  Student Student
 }
 
 func main() {
-  age := 11
-  newAge, err := he(age)
-  if err != nil {
-    fmt.Println(err.Error())
-  } else {
-    fmt.Printf("newAge: %d", newAge)
-  }
-}
+  arr := make([]Per, 0)
 
-func he(num int) (res int, err error) {
-  if num > 18 {
-    err = errors.New("不可大于18")
-    return
+  arr = append(arr, Per{
+    Hello: "hhh",
+    Student: Student{
+      Name: "xm",
+      Age:  12,
+    },
+  })
+
+  b, err := json.Marshal(arr)
+  if err != nil {
+    fmt.Errorf("%s", err.Error())
   }
-  res = num + 100
-  return
+
+  fmt.Printf("%s", string(b))
 }
