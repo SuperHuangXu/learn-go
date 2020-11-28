@@ -1,34 +1,34 @@
 package pointers
 
 import (
-  "errors"
-  "fmt"
+	"errors"
+	"fmt"
 )
 
 type Bitcoin int
 
 type Wallet struct {
-  balance Bitcoin
+	balance Bitcoin
 }
 
 func (w *Wallet) Deposit(amount Bitcoin) {
-  w.balance += amount
+	w.balance += amount
 }
 
 func (w *Wallet) Balance() Bitcoin {
-  return w.balance
+	return w.balance
 }
 
 var InsufficientFundsError = errors.New("cannot withdraw, insufficient funds")
 
 func (w *Wallet) Withdraw(amount Bitcoin) error {
-  if amount > w.balance {
-    return InsufficientFundsError
-  }
-  w.balance -= amount
-  return nil
+	if amount > w.balance {
+		return InsufficientFundsError
+	}
+	w.balance -= amount
+	return nil
 }
 
 func (b Bitcoin) String() string {
-  return fmt.Sprintf("%d BTC", b)
+	return fmt.Sprintf("%d BTC", b)
 }

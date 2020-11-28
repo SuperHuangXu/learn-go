@@ -1,18 +1,18 @@
 package main
 
 import (
-  "bytes"
-  "testing"
+	"bytes"
+	"testing"
 )
 
 func TestGreet(t *testing.T) {
-  buffer := bytes.Buffer{}
-  Greet(&buffer, "Chris")
+	buffer := bytes.Buffer{}
+	Greet(&buffer, "Chris")
 
-  got := buffer.String()
-  want := "Hello, Chris"
+	got := buffer.String()
+	want := "Hello, Chris"
 
-  if got != want {
-    t.Errorf("got '%s' want '%s'", got, want)
-  }
+	if got != want {
+		t.Errorf("got '%s' want '%s'", got, want)
+	}
 }
